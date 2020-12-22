@@ -15,7 +15,7 @@ environment {
               } 
         stage('Building our image') {
             steps { script { dockerImage = docker.build registry + 
-                    ":${today}"
+                    ":'${today}'"
                 }
             } 
         }
@@ -27,7 +27,7 @@ environment {
             }
         } 
         stage('Cleaning up') { 
-            steps { sh "docker rmi $registry:${today}"}
+            steps { sh "docker rmi $registry:'${today}'"}
         } 
     }
 }
